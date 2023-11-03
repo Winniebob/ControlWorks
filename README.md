@@ -105,3 +105,46 @@
 
 
 ![image](https://github.com/Winniebob/ControlWorks/assets/131287620/4846c147-bd3e-45d6-9e32-5048aba0c492)
+
+## Часть 2 : OOП
+
+ Создать иерархию классов в Java, который будет повторять диаграмму классов созданную в задаче 6(Диаграмма классов) .
+
+ ![image](https://github.com/Winniebob/ControlWorks/assets/131287620/f654cd45-af75-476a-8bc7-562faa27ee89)
+
+ Добавление нового животного
+ Реализовать функциональность для добавления новых животных в реестр.       
+ Животное должно определяться в правильный класс (например, "собака", "кошка", "хомяк" и т.д.)
+
+![image](https://github.com/Winniebob/ControlWorks/assets/131287620/09d98e2f-8eaf-4431-83c1-91b3aeeb333d)
+
+![image](https://github.com/Winniebob/ControlWorks/assets/131287620/9567ae21-b322-4abf-a256-16c91ea9d6a3)
+
+
+Вывести список команд, которые может выполнять добавленное животное (например, "сидеть", "лежать").
+
+![image](https://github.com/Winniebob/ControlWorks/assets/131287620/c2165028-21a6-42fd-b5a1-9bbcd7b6bf08)
+
+![image](https://github.com/Winniebob/ControlWorks/assets/131287620/8f428657-af72-4921-8864-8987eaafa08c)
+
+Добавить возможность обучать животных новым командам.
+
+![image](https://github.com/Winniebob/ControlWorks/assets/131287620/739523c7-c724-4fb5-9094-bc9d86939481)
+
+![image](https://github.com/Winniebob/ControlWorks/assets/131287620/f7d5a656-fbae-474a-afcf-25d580bd865c)
+
+
+Вывести список животных по дате рождения
+
+![image](https://github.com/Winniebob/ControlWorks/assets/131287620/3e2d734f-7d88-476f-ba7d-38f1d58271b8)
+
+ Реализовать консольный пользовательский интерфейс с меню для навигации между вышеуказанными функциями.
+
+![image](https://github.com/Winniebob/ControlWorks/assets/131287620/ea9af30a-b2a4-44a5-8bff-1d2501879c01)
+
+Создать механизм, который позволяет вывести на экран общее количество созданных животных любого типа (Как домашних, так и вьючных), то есть при создании каждого нового животного счетчик увеличивается на “1”. 
+
+ 
+  ![image](https://github.com/Winniebob/ControlWorks/assets/131287620/b9b8e665-3e5e-48db-a8ee-38ec0f93cdb8)
+
+
