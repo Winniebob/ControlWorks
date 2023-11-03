@@ -1,10 +1,11 @@
-package Ui;
+package Controller;
 
 import Model.Animal.Cat;
 import Model.Animal.Dog;
 import Model.Animal.Hamster;
 import Model.AnimalCounter;
 import Model.AnimalList;
+import Ui.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;
