@@ -21,7 +21,6 @@ public class Dog implements Animal {
         this.age = age;
     }
 
-
     @Override
     public String getName() {
         return this.name;

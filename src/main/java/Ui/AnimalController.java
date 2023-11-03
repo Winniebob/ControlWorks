@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class AnimalController {
     private final AnimalList<Object> animalList = new AnimalList<>();
-    private final View ui = new View();
+    private final View view = new View();
 
     // главное меню
     private final Map<String, String> menuMain = new HashMap<String, String>() {{
@@ -31,21 +31,16 @@ public class AnimalController {
         put("3", "Hamster");
         put("0", "Cancel");
     }};
-
-    private final Map<String, String> menuYesNo = new HashMap<>() {{
+    private final Map<String, String> menuChoise = new HashMap<>() {{
         put("1", "Yes");
         put("0", "No");
     }};
-
-    private enum ANIMALS {CAT, DOG, HAMSTER}
-
-    ;
+    private enum ANIMALS {CAT, DOG, HAMSTER};
 
     public void Run() throws Exception {
         String menu;
         do {
             menu = getOperation();
-
             switch (menu) {
                 case "11" -> addAnimal(ANIMALS.CAT);
                 case "12" -> addAnimal(ANIMALS.DOG);
@@ -72,34 +67,27 @@ public class AnimalController {
 
 
     private void showCommands(ANIMALS animal) {
-        String name = ui.getString("Animal name: ");
-
+        String name = view.getString("Animal name: ");
         Object o = null;
-
         switch (animal) {
             case CAT -> o = animalList.findCat(name);
             case DOG -> o = animalList.findDog(name);
             case HAMSTER -> o = animalList.findHamster(name);
         }
-
         if (o == null) {
             Logger.getAnonymousLogger().info("Animal not found");
             return;
         }
-
         List<String> commands = null;
-
         switch (animal) {
             case CAT -> commands = ((Cat) o).getCommandList();
             case DOG -> commands = ((Dog) o).getCommandList();
             case HAMSTER -> commands = ((Hamster) o).getCommandList();
         }
-
         StringBuilder strCommands = new StringBuilder();
         for (String c : commands) {
             strCommands.append(c).append(", ");
         }
-
         Logger.getAnonymousLogger().info(strCommands.toString());
     }
 
@@ -112,57 +100,48 @@ public class AnimalController {
             case DOG -> animals = animalList.getDogs();
             case HAMSTER -> animals = animalList.getHamsters();
         }
-
         Logger logger = Logger.getAnonymousLogger();
         for (Object o : animals) {
             logger.info(o.toString());
         }
     }
 
-
     private void addCommand(ANIMALS animal) {
-        String name = ui.getString("Animal name: ");
-        Object objAnimal = null;
-        switch (animal) {
-            case CAT -> objAnimal = animalList.findCat(name);
-            case DOG -> objAnimal = animalList.findDog(name);
-            case HAMSTER -> objAnimal = animalList.findHamster(name);
+        String name = view.getString("Animal name: ");
+        Object oAnimal  = null;
+        switch (animal ) {
+            case CAT -> oAnimal  = animalList.findCat(name);
+            case DOG -> oAnimal  = animalList.findDog(name);
+            case HAMSTER -> oAnimal  = animalList.findHamster(name);
         }
-
-        if (objAnimal == null) {
+        if (animal == null) {
             Logger.getAnonymousLogger().info("No such animal found");
         } else {
-            String command = ui.getString("New command: ");
-
+            String command = view.getString("New command: ");
             switch (animal) {
-                case CAT -> ((Cat) objAnimal).addCommand(command);
-                case DOG -> ((Dog) objAnimal).addCommand(command);
-                case HAMSTER -> ((Hamster) objAnimal).addCommand(command);
+                case CAT -> ((Cat) oAnimal ).addCommand(command);
+                case DOG -> ((Dog) oAnimal ).addCommand(command);
+                case HAMSTER -> ((Hamster) oAnimal ).addCommand(command);
             }
         }
-
     }
 
-
     private void addAnimal(ANIMALS animal) throws Exception {
-        // Счетчик
         try (AnimalCounter counter = new AnimalCounter()) {
             counter.add();
         }
-
-
-        String name = ui.getString("Animal name: ");
-        String color = ui.getString("Color: ");
-        String date = ui.getString("Аge: ");
+        String name = view.getString("Animal name: ");
+        String color = view.getString("Color: ");
+        String date = view.getString("Аge: ");
 
         List<String> commands = new ArrayList<>();
         System.out.println("Add commands?");
-        String menu = ui.menuShow(menuYesNo);
+        String menu = view.menuShow(menuChoise);
         while (menu.equals("1")) {
-            String command = ui.getString("command: ");
+            String command = view.getString("command: ");
             commands.add(command);
             System.out.println("Continue?");
-            menu = ui.menuShow(menuYesNo);
+            menu = view.menuShow(menuChoise);
         }
 
         switch (animal) {
@@ -172,13 +151,11 @@ public class AnimalController {
         }
     }
 
-
     private String getOperation() {
-        String menu = ui.menuShow(menuMain);
+        String menu = view.menuShow(menuMain);
         if (!menu.isEmpty() && !menu.equals("0") && !menu.equals("5")) {
-            menu += ui.menuShow(menuAnimal);
+            menu += view.menuShow(menuAnimal);
         }
-
         return menu;
     }
 }
